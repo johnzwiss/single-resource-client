@@ -34,18 +34,18 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
-			<Link to='/' style={linkStyle}>
+		<Nav.Item>
+			<Link to='/coffees' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
+            <Link to='/coffees' style={linkStyle}>
                 react-auth-template
             </Link>
         </Navbar.Brand>
