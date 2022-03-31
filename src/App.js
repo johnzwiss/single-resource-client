@@ -6,12 +6,7 @@ import { v4 as uuid } from 'uuid'
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
-import RequireAuth from './components/shared/RequireAuth'
 import Home from './components/Home'
-import SignUp from './components/auth/SignUp'
-import SignIn from './components/auth/SignIn'
-import SignOut from './components/auth/SignOut'
-import ChangePassword from './components/auth/ChangePassword'
 import CreateCoffee from './components/coffees/CreateCoffee'
 import ShowCoffee from './components/coffees/ShowCoffee'
 
@@ -47,14 +42,7 @@ const App = () => {
 				<Header user={user} />
 				<Routes>
 					<Route path='/coffees' element={<Home msgAlert={msgAlert} />} />
-					<Route
-						path='/sign-up'
-						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
-						path='/sign-in'
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-					/>
+				
 					<Route
 					path='/addCoffee'
 					element={
@@ -69,21 +57,7 @@ const App = () => {
 					<ShowCoffee msgAlert={msgAlert} user={user} />
 					}
 				/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
+     
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
