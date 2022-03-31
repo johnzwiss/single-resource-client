@@ -12,6 +12,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CreateCoffee from './components/coffees/CreateCoffee'
+import ShowCoffee from './components/coffees/ShowCoffee'
 
 const App = () => {
 
@@ -44,7 +46,7 @@ const App = () => {
 			<Fragment>
 				<Header user={user} />
 				<Routes>
-					<Route path='/coffees' element={<Home msgAlert={msgAlert} user={user} />} />
+					<Route path='/coffees' element={<Home msgAlert={msgAlert} />} />
 					<Route
 						path='/sign-up'
 						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -53,6 +55,20 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
+					<Route
+					path='/addCoffee'
+					element={
+					
+					<CreateCoffee msgAlert={msgAlert} user={user} />
+					}
+				/>
+				<Route
+					path='/coffees/:id'
+					element={
+						
+					<ShowCoffee msgAlert={msgAlert} user={user} />
+					}
+				/>
           <Route
             path='/sign-out'
             element={

@@ -1,5 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import {getAllCoffees} from '../../api/coffees'
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
+const cardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
+}
+
 
 const IndexCoffees = (props) => {
     const [coffees, setCoffees] = useState(null) 
@@ -7,7 +16,8 @@ const IndexCoffees = (props) => {
     useEffect(() => {
         getAllCoffees()
             .then(res => {
-                setCoffees(res.data.pets)
+                setCoffees(res.data.coffees)
+                console.log(res.data.coffees)
             })
             .catch(console.error)
     }, [])
@@ -18,25 +28,33 @@ const IndexCoffees = (props) => {
         return <p>no pets yet</p>
     }
 
-    let coffeesJsx
+    let coffeeCards
 
     if (coffees.length > 0) {
-        coffeesJsx = coffees.map(coffee=> (
-            <li key={coffee.id}>
-                {coffee.name}
-                {coffee.roast}  
-            </li>
-        ))
+        
+        coffeeCards = coffees.map(coffee => (
+            //one method of styling usually reserved for a single style
+            //we can use inline, just like in html
+            <Card key={coffee.id} style={{width: '30%'}}>
+                <Card.Header>{coffee.name}</Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                       <Link to ={`/coffees/${coffee._id}`}>{coffee.name}</Link>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            ))
+            
     }
 
     return (
         <>
-            <h3> all the coffees</h3>
-            <ul>
-                {coffeesJsx}
-            </ul>
-        </>
-    )
-}
+        <h3>All the coffees</h3>
+        <div style={cardContainerLayout}>
+            {coffeeCards}
+        </div>
+    </>
+  )
+    }
 
 export default IndexCoffees

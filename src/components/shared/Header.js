@@ -39,6 +39,12 @@ const alwaysOptions = (
 				Home
 			</Link>
 		</Nav.Item>
+
+		<Nav.Item className="m-2">
+			<Link to='addCoffee' style={linkStyle}>
+				Add Coffee
+			</Link>
+		</Nav.Item>
 	</>
 )
 
@@ -46,7 +52,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/coffees' style={linkStyle}>
-                react-auth-template
+                Coffee APP
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
